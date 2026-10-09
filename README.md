@@ -9,4 +9,20 @@ After the tenant is provisioned first thing to check would be what are you licen
 
 Wiz Cloud (POV)
 
-Azure - I chose to connect to one subscription. The integration was fairly straight forward, when it comes to creating an app registration and an enterprise app. one pre-requisite is to make sure the Azure app id that gets provisioned during the integration in WIZ is used in the azure tenant.
+Azure Connector - you can connect using management group, subscription or you have a choice to explicitly also scan Entra ID only for CIEM (Cloud Identity Entitlement Management)
+
+Pre-Requisites when creating a connection in Wiz
+  1. Azure Tenant ID
+  2. Management Group ID / Subscription ID
+
+I chose to connect to one subscription which has many resources to give me a good idea on what the scan found which helps me compare to Google SCCE and Defender.
+
+The integration was fairly straight forward, an instance of Wiz app registration in the form of a service principal (enterprise app) is provisioned in Entra ID by Wiz.
+
+You also create 3 Custom IAM roles 
+  1. WizCustomRole - Permissions on Compute, Registry, Vaults, Storage.
+  2. WizDataScanningRole - Permissions on SQL Databases
+  3. WizServerlessScanningRole - Permissions on backups and functions.
+
+
+
