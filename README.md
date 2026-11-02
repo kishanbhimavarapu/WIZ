@@ -24,5 +24,13 @@ You also create 3 Custom IAM roles
   2. WizDataScanningRole - Permissions on SQL Databases
   3. WizServerlessScanningRole - Permissions on backups and functions.
 
+Outpost - if the data must be scanned local to the cloud tenants, one should deploy outpost, this will be hosted in a dedicated kubernets cluster and no other workload should be running it it except for outpost. from a networking standpoint you have 2 options, automated (Wiz manages), BYON (Bring your own netowork).
+
+I went with BYON option so we have the option to manage our network. we created VNet, SUbnets, Route Tables.
+
+In order for meta data to be pushed to the tenant past scans are complete, you need to allow traffic from port 443 and whitelist either *wiz.io or each individual hosts. We allowed traffic to the list Wiz gave us and didn't wildcard it to *wiz.io.
+
+
+
 
 
